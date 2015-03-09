@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<definitions
+	name="FiverxLinkSecurityService"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:sv_types="http://fiverx.de/security/types"
+	xmlns:sv="http://fiverx.de/security"
+	targetNamespace="http://fiverx.de/security">
+
+	<xs:annotation>
+		<xs:documentation xml:lang="de">
+			@(#) $Id: FiveRxSecurityBox.wsdl 15853 2015-02-27 10:57:36Z mbeier $
+			FIVERX.LINK 2.0 SecurityService WSDL, www.fiverx.de
+		</xs:documentation>
+	</xs:annotation>
+
+	<types>
+		<xs:schema
+			xmlns:local_types="http://fiverx.de/security/types"
+			xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+			xmlns='http://www.w3.org/2001/XMLSchema'
+			xmlns:soap11-enc='http://schemas.xmlsoap.org/soap/encoding/'
+			targetNamespace="http://fiverx.de/security/types">
+
+			<!-- Request-Messages -->
+			<xs:complexType name="einParameterRequestMsg">
+				<xs:sequence>
+					<!-- ladeRzSecurityVersion: {http://fiverx.de/security/SV0100}rzeLadeRzSecurityVersionAnfrage -->
+					<xs:element name="rzeEingabeDaten" nillable='false' type='string' />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="zweiParameterRequestMsg">
+				<xs:sequence>
+					<!--
+						ladeRzPublicKey: {http://fiverx.de/security/SV0100}rzeLadeRzZertifikatAnfrage
+						ladeRzSicherheitsmerkmale: {http://fiverx.de/security/SV0100}rzeLadeRzSicherheitsmerkmaleAnfrage
+						aktiviereApothekenZugang: {http://fiverx.de/security/SV0100}rzeAktiviereApothekenZugangAnfrage
+						verlaengereApothekenZugang: {http://fiverx.de/security/SV0100}rzeVerlaengereApothekenZugangAnfrage
+						verarbeiteAuftrag: {http://fiverx.de/security/SV0100}rzeAnfrage
+					 -->
+					<xs:element name="rzeEingabeDaten" nillable='false' type='string' />
+					<!-- alle: {http://fiverx.de/security/SV0100}rzSecurityVersion -->
+					<xs:element name="rzeLadeRzSecurityVersion" nillable='false' type='string' />
+				</xs:sequence>
+			</xs:complexType>
+
+			<!-- Response-Message -->
+			<xs:complexType name="genericResponseMsg">
+				<xs:sequence>
+					<!--
+						ladeRzSecurityVersion: {http://fiverx.de/security/SV0100}rzeLadeRzSecurityVersionAntwort
+						ladeRzPublicKey: {http://fiverx.de/security/SV0100}rzeLadeRzZertifikatAntwort
+						ladeRzSicherheitsmerkmale: {http://fiverx.de/security/SV0100}rzeLadeRzSicherheitsmerkmaleAntwort
+						aktiviereApothekenZugang: {http://fiverx.de/security/SV0100}rzeAktiviereApothekenZugangAntwort
+						verlaengereApothekenZugang: {http://fiverx.de/security/SV0100}rzeVerlaengereApothekenZugangAntwort
+						verarbeiteAuftrag: {http://fiverx.de/security/SV0100}rzeAntwort
+					 -->
+					<xs:element name="rzeAusgabeDaten" nillable='false' type='string' />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:element name="ladeRzSecurityVersionRequestMsg" nillable="false" type="local_types:einParameterRequestMsg" />
+			<xs:element name="ladeRzSecurityVersionResponseMsg" nillable="false" type="local_types:genericResponseMsg" />
+			<xs:element name="ladeRzZertifikatRequestMsg" nillable="false" type="local_types:zweiParameterRequestMsg" />
+			<xs:element name="ladeRzZertifikatResponseMsg" nillable="false" type="local_types:genericResponseMsg" />
+			<xs:element name="ladeRzSicherheitsmerkmaleRequestMsg" nillable="false" type="local_types:zweiParameterRequestMsg" />
+			<xs:element name="ladeRzSicherheitsmerkmaleResponseMsg" nillable="false" type="local_types:genericResponseMsg" />
+			<xs:element name="aktiviereApothekenZugangRequestMsg" nillable="false" type="local_types:zweiParameterRequestMsg" />
+			<xs:element name="aktiviereApothekenZugangResponseMsg" nillable="false" type="local_types:genericResponseMsg" />
+			<xs:element name="verlaengereApothekenZugangRequestMsg" nillable="false" type="local_types:zweiParameterRequestMsg" />
+			<xs:element name="verlaengereApothekenZugangResponseMsg" nillable="false" type="local_types:genericResponseMsg" />
+			<xs:element name="verarbeiteAuftragRequestMsg" nillable="false" type="local_types:zweiParameterRequestMsg" />
+			<xs:element name="verarbeiteAuftragResponseMsg" nillable="false" type="local_types:genericResponseMsg" />
+
+		</xs:schema>
+	</types>
+
+	<message name="ladeRzSecurityVersionRequest">
+		<part name="ladeRzSecurityVersionRequestMsg" element="sv_types:ladeRzSecurityVersionRequestMsg" />
+	</message>
+	<message name="ladeRzSecurityVersionResponse">
+		<part name="ladeRzSecurityVersionResponseMsg" element="sv_types:ladeRzSecurityVersionResponseMsg" />
+	</message>
+	<message name="ladeRzZertifikatRequest">
+		<part name="ladeRzZertifikatRequestMsg" element="sv_types:ladeRzZertifikatRequestMsg" />
+	</message>
+	<message name="ladeRzZertifikatResponse">
+		<part name="ladeRzZertifikatResponseMsg" element="sv_types:ladeRzZertifikatResponseMsg" />
+	</message>
+	<message name="ladeRzSicherheitsmerkmaleRequest">
+		<part name="ladeRzSicherheitsmerkmaleRequestMsg" element="sv_types:ladeRzSicherheitsmerkmaleRequestMsg" />
+	</message>
+	<message name="ladeRzSicherheitsmerkmaleResponse">
+		<part name="ladeRzSicherheitsmerkmaleResponseMsg" element="sv_types:ladeRzSicherheitsmerkmaleResponseMsg" />
+	</message>
+	<message name="aktiviereApothekenZugangRequest">
+		<part name="aktiviereApothekenZugangRequestMsg" element="sv_types:aktiviereApothekenZugangRequestMsg" />
+	</message>
+	<message name="aktiviereApothekenZugangResponse">
+		<part name="aktiviereApothekenZugangResponseMsg" element="sv_types:aktiviereApothekenZugangResponseMsg" />
+	</message>
+	<message name="verlaengereApothekenZugangRequest">
+		<part name="verlaengereApothekenZugangRequestMsg" element="sv_types:verlaengereApothekenZugangRequestMsg" />
+	</message>
+	<message name="verlaengereApothekenZugangResponse">
+		<part name="verlaengereApothekenZugangResponseMsg" element="sv_types:verlaengereApothekenZugangResponseMsg" />
+	</message>
+	<message name="verarbeiteAuftragRequest">
+		<part name="verarbeiteAuftragRequestMsg" element="sv_types:verarbeiteAuftragRequestMsg" />
+	</message>
+	<message name="verarbeiteAuftragResponse">
+		<part name="verarbeiteAuftragResponseMsg" element="sv_types:verarbeiteAuftragResponseMsg" />
+	</message>
+
+	<portType name="FiverxLinkSecurityService_PortType">
+		<operation name="ladeRzSecurityVersion">
+			<input message="sv:ladeRzSecurityVersionRequest" name="ladeRzSecurityVersionRequest" />
+			<output message="sv:ladeRzSecurityVersionResponse" name="ladeRzSecurityVersionResponse" />
+		</operation>
+		<operation name="ladeRzZertifikat">
+			<input message="sv:ladeRzZertifikatRequest" name="ladeRzZertifikatRequest" />
+			<output message="sv:ladeRzZertifikatResponse" name="ladeRzZertifikatResponse" />
+		</operation>
+		<operation name="ladeRzSicherheitsmerkmale">
+			<input message="sv:ladeRzSicherheitsmerkmaleRequest" name="ladeRzSicherheitsmerkmaleRequest" />
+			<output message="sv:ladeRzSicherheitsmerkmaleResponse" name="ladeRzSicherheitsmerkmaleResponse" />
+		</operation>
+		<operation name="aktiviereApothekenZugang">
+			<input message="sv:aktiviereApothekenZugangRequest" name="aktiviereApothekenZugangRequest" />
+			<output message="sv:aktiviereApothekenZugangResponse" name="aktiviereApothekenZugangResponse" />
+		</operation>
+		<operation name="verlaengereApothekenZugang">
+			<input message="sv:verlaengereApothekenZugangRequest" name="verlaengereApothekenZugangRequest" />
+			<output message="sv:verlaengereApothekenZugangResponse" name="verlaengereApothekenZugangResponse" />
+		</operation>
+		<operation name="verarbeiteAuftrag">
+			<input message="sv:verarbeiteAuftragRequest" name="verarbeiteAuftragRequest" />
+			<output message="sv:verarbeiteAuftragResponse" name="verarbeiteAuftragResponse" />
+		</operation>
+	</portType>
+
+	<binding name="FiverxLinkSecurityService_Binding" type="sv:FiverxLinkSecurityService_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="ladeRzSecurityVersion">
+			<soap:operation soapAction="http://fiverx.de/security#rzeladeRzSecurityVersion" style="document" />
+			<input name="ladeRzSecurityVersionRequest"><soap:body use="literal" /></input>
+			<output name="ladeRzSecurityVersionResponse"><soap:body use="literal" /></output>
+		</operation>
+		<operation name="ladeRzZertifikat">
+			<soap:operation soapAction="http://fiverx.de/security#ladeRzZertifikat" style="document" />
+			<input name="ladeRzZertifikatRequest"><soap:body use="literal" /></input>
+			<output name="ladeRzZertifikatResponse"><soap:body use="literal" /></output>
+		</operation>
+		<operation name="ladeRzSicherheitsmerkmale">
+			<soap:operation soapAction="http://fiverx.de/security#ladeRzSicherheitsmerkmale" style="document" />
+			<input name="ladeRzSicherheitsmerkmaleRequest"><soap:body use="literal" /></input>
+			<output name="ladeRzSicherheitsmerkmaleResponse"><soap:body use="literal" /></output>
+		</operation>
+		<operation name="aktiviereApothekenZugang">
+			<soap:operation soapAction="http://fiverx.de/security#aktiviereApothekenZugang" style="document" />
+			<input name="aktiviereApothekenZugangRequest"><soap:body use="literal" /></input>
+			<output name="aktiviereApothekenZugangResponse"><soap:body use="literal" /></output>
+		</operation>
+		<operation name="verlaengereApothekenZugang">
+			<soap:operation soapAction="http://fiverx.de/security#verlaengereApothekenZugang" style="document" />
+			<input name="verlaengereApothekenZugangRequest"><soap:body use="literal" /></input>
+			<output name="verlaengereApothekenZugangResponse"><soap:body use="literal" /></output>
+		</operation>
+		<operation name="verarbeiteAuftrag">
+			<soap:operation soapAction="http://fiverx.de/security#verarbeiteAuftrag" style="document" />
+			<input name="verarbeiteAuftragRequest"><soap:body use="literal" /></input>
+			<output name="verarbeiteAuftragResponse"><soap:body use="literal" /></output>
+		</operation>
+	</binding>
+
+	<service name="FiverxLinkSecurityService">
+		<port name="FiverxLinkSecurityService_Port" binding="sv:FiverxLinkSecurityService_Binding">
+			<soap:address location="https://fiverx.de:443/security" />
+		</port>
+	</service>
+
+</definitions>

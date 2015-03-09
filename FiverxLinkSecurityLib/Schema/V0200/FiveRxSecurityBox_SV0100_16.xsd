@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<xs:schema
+	targetNamespace="http://fiverx.de/security/SV0100"
+	xmlns:fiverx="http://fiverx.de/security/SV0100"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<xs:annotation>
+		<xs:documentation xml:lang="de">
+			@(#) $Id: FiveRxSecurityBox.xsd 15853 2015-02-27 10:57:36Z mbeier $
+			FIVERX.LINK 2.0 SecurityService XSD, www.fiverx.de
+			Version: SV0100
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="apoIk">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="\d{9}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="rzKdNr">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value=".{1,47}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="apoSwHersteller">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value=".{1,128}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="apoSwName">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value=".{1,128}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="apoSwVersion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value=".{1,64}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="apoLogMethode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value=".{1,64}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="apoInfo">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value=".{1,25}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="pkcs12KeyStore">
+		<xs:simpleType>
+			<xs:restriction base="xs:base64Binary">
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="rzZertifikat">
+		<xs:simpleType>
+			<xs:restriction base="xs:base64Binary">
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="apoAktivierungsCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:base64Binary">
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="rzFiveRxVersion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="V\d{4}"></xs:pattern>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="rzSecurityVersion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="SV\d{4}"></xs:pattern>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+    <xs:complexType name="rzHandshake">
+        <xs:sequence>
+            <xs:element name="rzEncryptionAlgorithms" minOccurs="1" maxOccurs="10" type="fiverx:rzEncryptionAlgorithm" />
+            <xs:element name="rzHashfunctions" minOccurs="1" maxOccurs="10" type="fiverx:rzHashFunction" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="rzEncryptionAlgorithm">
+        <xs:sequence>
+        	<!-- Zum Beispiel RSA, AES, DES -->
+            <xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
+        	<!-- Zum Beispiel ECB, CBC, GCM -->
+            <xs:element name="mode" minOccurs="1" maxOccurs="5" type="xs:string" />
+            <!-- Zum Beispiel: PKCS1, PKCS5, OAEP -->
+            <xs:element name="padding" minOccurs="1" maxOccurs="5" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="rzHashFunction">
+        <xs:sequence>
+        	<!-- Zum Beispiel SHA-1, SHA-256 -->
+            <xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+	<xs:element name="rzDatenBox">
+		<xs:simpleType>
+			<xs:restriction base="xs:base64Binary">
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="apoInformation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fiverx:apoIk" />
+				<xs:element ref="fiverx:rzKdNr" />
+				<xs:element ref="fiverx:apoSwHersteller" />
+				<xs:element ref="fiverx:apoSwName" />
+				<xs:element ref="fiverx:apoSwVersion" />
+				<xs:element ref="fiverx:apoLogMethode" />
+				<xs:element ref="fiverx:apoInfo" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="rzeAnfrage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fiverx:apoInformation" />
+				<xs:element ref="fiverx:rzDatenBox" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rzeAntwort">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hinweis" type="xs:string" minOccurs="0" />
+				<xs:element ref="fiverx:rzDatenBox" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="rzeLadeRzZertifikatAnfrage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fiverx:apoInformation" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rzeLadeRzZertifikatAntwort">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hinweis" minOccurs="0" type="xs:string"/>
+				<xs:element ref="fiverx:rzZertifikat" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="rzeAktiviereApothekenZugangAnfrage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fiverx:apoInformation" />
+				<xs:element ref="fiverx:apoAktivierungsCode" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rzeAktiviereApothekenZugangAntwort">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hinweis" minOccurs="0" type="xs:string"/>
+				<xs:element ref="fiverx:pkcs12KeyStore" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="rzeVerlaengereApothekenZugangAnfrage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fiverx:apoInformation" />
+				<xs:element ref="fiverx:apoIk" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rzeVerlaengereApothekenZugangAntwort">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hinweis" minOccurs="0" type="xs:string"/>
+				<xs:element ref="fiverx:pkcs12KeyStore" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="rzeLadeRzSecurityVersionAnfrage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fiverx:apoInformation" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rzeLadeRzSecurityVersionAntwort">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hinweis" minOccurs="0" type="xs:string"/>
+				<xs:element ref="fiverx:rzSecurityVersion" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="rzeLadeRzSicherheitsmerkmaleAnfrage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fiverx:apoInformation" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rzeLadeRzSicherheitsmerkmaleAntwort">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hinweis" minOccurs="0" type="xs:string"/>
+				<xs:element name="rzSicherheitsmerkmale" type="fiverx:rzHandshake" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

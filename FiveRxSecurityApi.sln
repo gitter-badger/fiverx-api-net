@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiverxLinkSecurityLib", "FiverxLinkSecurityLib\FiverxLinkSecurityLib.csproj", "{80903663-112B-4F35-B733-4BAE9C7B35F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiverxLinkSecurityTestClient", "FiverxLinkSecurityTestClient\FiverxLinkSecurityTestClient.csproj", "{151DE2C6-0087-4CC8-85D0-5EFD3F4A880F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://ars-tfs:8080/tfs/ars
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = FiverxLinkSecurityLib\\FiverxLinkSecurityLib.csproj
+		SccProjectName1 = FiverxLinkSecurityLib
+		SccLocalPath1 = FiverxLinkSecurityLib
+		SccProjectUniqueName2 = FiverxLinkSecurityTestClient\\FiverxLinkSecurityTestClient.csproj
+		SccProjectName2 = FiverxLinkSecurityTestClient
+		SccLocalPath2 = FiverxLinkSecurityTestClient
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80903663-112B-4F35-B733-4BAE9C7B35F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80903663-112B-4F35-B733-4BAE9C7B35F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80903663-112B-4F35-B733-4BAE9C7B35F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80903663-112B-4F35-B733-4BAE9C7B35F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{151DE2C6-0087-4CC8-85D0-5EFD3F4A880F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{151DE2C6-0087-4CC8-85D0-5EFD3F4A880F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{151DE2C6-0087-4CC8-85D0-5EFD3F4A880F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{151DE2C6-0087-4CC8-85D0-5EFD3F4A880F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
