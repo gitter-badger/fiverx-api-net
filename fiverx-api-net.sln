@@ -1,28 +1,36 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiverx-api-net", "fiverx-api-net.csproj", "{7FE8D47D-6CE1-42CB-A345-B8045A7E82BB}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiverxLinkSecurityLib", "FiverxLinkSecurityLib\FiverxLinkSecurityLib.csproj", "{80903663-112B-4F35-B733-4BAE9C7B35F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiverxLinkSecurityTestClient", "FiverxLinkSecurityTestClient\FiverxLinkSecurityTestClient.csproj", "{151DE2C6-0087-4CC8-85D0-5EFD3F4A880F}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = http://ars-tfs:8080/tfs/ars
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = FiverxLinkSecurityLib\\FiverxLinkSecurityLib.csproj
-		SccProjectName1 = FiverxLinkSecurityLib
-		SccLocalPath1 = FiverxLinkSecurityLib
-		SccProjectUniqueName2 = FiverxLinkSecurityTestClient\\FiverxLinkSecurityTestClient.csproj
-		SccProjectName2 = FiverxLinkSecurityTestClient
-		SccLocalPath2 = FiverxLinkSecurityTestClient
+		SccProjectUniqueName0 = FiverxLinkSecurityLib\\FiverxLinkSecurityLib.csproj
+		SccProjectName0 = FiverxLinkSecurityLib
+		SccLocalPath0 = FiverxLinkSecurityLib
+		SccProjectUniqueName1 = FiverxLinkSecurityTestClient\\FiverxLinkSecurityTestClient.csproj
+		SccProjectName1 = FiverxLinkSecurityTestClient
+		SccLocalPath1 = FiverxLinkSecurityTestClient
+		SccLocalPath2 = .
+		SccProjectUniqueName3 = fiverx-api-net.csproj
+		SccLocalPath3 = .
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FE8D47D-6CE1-42CB-A345-B8045A7E82BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE8D47D-6CE1-42CB-A345-B8045A7E82BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE8D47D-6CE1-42CB-A345-B8045A7E82BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE8D47D-6CE1-42CB-A345-B8045A7E82BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{80903663-112B-4F35-B733-4BAE9C7B35F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{80903663-112B-4F35-B733-4BAE9C7B35F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80903663-112B-4F35-B733-4BAE9C7B35F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
