@@ -101,6 +101,7 @@ namespace FiveRxLinkSecurityLib.Security
     }
 
 
+
     /// <summary>
     /// Erstellt ein ein asymmetrisches Schlüsselpaar, ein Passwort für den privaten Teil des Zertifikates und generiert
     /// aus diesen erstellten Bestandteilen ein Zertifikat entsprechend der übergebenen Schlüsselstärke. Nach Bedarf können die 
@@ -471,6 +472,7 @@ namespace FiveRxLinkSecurityLib.Security
       }
     }
 
+
     /// <summary>
     /// Konvertierung eines im base64 Format vorliegenden Zertifikates in ein BouncyCastle Zertifikats Objekt
     /// </summary>
@@ -495,6 +497,12 @@ namespace FiveRxLinkSecurityLib.Security
       keyStore = CreatePkcs12Store(keyStoreAsArray, passwort, "");
 
       return keyStore;
+    }
+
+    public static X509Certificate ConvertByteArrayToX509Certificate(byte[] certAsByteArray)
+    {
+      X509CertificateParser parser = new X509CertificateParser();
+      return parser.ReadCertificate(certAsByteArray);
     }
 
     /// <summary>

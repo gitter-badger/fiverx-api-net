@@ -1,11 +1,42 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace FiveRxLinkSecurityLib.Global
 {
   public class ParseHelper
   {
+
+    public static string GetStringFromXMLObject<T>(object root)
+    {
+      XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+      string xmlString = null;
+      MemoryStream memoryStream = new MemoryStream();
+      XmlTextWriter xmlTextWriter = new XmlTextWriter(memoryStream, Standards.DefEncoding);
+      xmlSerializer.Serialize(xmlTextWriter, root);
+      memoryStream = (MemoryStream)xmlTextWriter.BaseStream;
+      xmlString = Standards.DefEncoding.GetString(memoryStream.ToArray());
+      memoryStream.Close();
+      memoryStream.Dispose();
+      return xmlString;
+    }
+
+    public static T GetObjectFromXML<T>(string soapContent)
+    {
+      MemoryStream stream = new MemoryStream();
+      StreamWriter w = new StreamWriter(stream, Standards.DefEncoding);
+      w.BaseStream.Seek(0, SeekOrigin.End);
+      w.WriteLine(soapContent);
+      w.Close();
+      stream = new MemoryStream(stream.ToArray());
+      XmlSerializer serializer = new XmlSerializer(typeof(T));
+      object soapDeserializedObject = (T)serializer.Deserialize(stream);
+      stream.Close();
+      stream.Dispose();
+      w.Dispose();
+      return (T)soapDeserializedObject;
+    }
 
     public static byte[] GetByteArrayFromFile(string dateipfad)
     {

@@ -1,0 +1,6 @@
+C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\FiverxLinkSecurityLib.dll.config
+C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\FiverxLinkSecurityLib.dll
+C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\FiverxLinkSecurityLib.pdb
+C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\BouncyCastle.Crypto.dll
+C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\obj\Debug\FiverxLinkSecurityLib.dll
+C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\obj\Debug\FiverxLinkSecurityLib.pdb

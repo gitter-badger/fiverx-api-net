@@ -9,12 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FiverxLinkSecurityLib</RootNamespace>
     <AssemblyName>FiverxLinkSecurityLib</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,12 +49,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global\GlobalServiceParameters.cs" />
     <Compile Include="Kommunikation\V0200\FiveRxSecurityRequest.cs" />
     <Compile Include="Kommunikation\V0200\FiveRxSecurityResponse.cs" />
+    <Compile Include="Kommunikation\V0200\FiveRxSecurityServiceHelper.cs" />
     <Compile Include="Schema\V0200\FiveRxSecurityBox_SV0100_16.cs">
       <DependentUpon>FiveRxSecurityBox_SV0100_16.xsd</DependentUpon>
     </Compile>
@@ -67,10 +68,29 @@
     <Compile Include="Security\Password.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SignHelper.cs" />
+    <Compile Include="Service References\FiveRxSecurityService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="WSDL\V0200\FiverxLinkSecurityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assemblies\BouncyCastle.Crypto.dll" />
+    <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService1.disco" />
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzZertifikatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.verarbeiteAuftragResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService1.wsdl" />
+    <None Include="Service References\FiveRxSecurityService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\configuration.svcinfo" />
+    <None Include="Service References\FiveRxSecurityService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -81,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FiveRxSecurityService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

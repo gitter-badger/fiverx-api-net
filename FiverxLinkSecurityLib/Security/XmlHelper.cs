@@ -81,7 +81,9 @@ namespace FiveRxLinkSecurityLib.Security
         XmlHelper.DecryptXML(tmpXml, decryptionKeyStore, decryptionKeyStorePasswort);
         istEntschluesselungErfolgreich = true;
       }
-      catch { }
+      catch
+      {
+      }
 
       if (istEntschluesselungErfolgreich)
       {
@@ -100,7 +102,9 @@ namespace FiveRxLinkSecurityLib.Security
           istRohdatenTransfer = true;
         }
         catch { }
+
       }
+
 
     }
 
@@ -114,8 +118,10 @@ namespace FiveRxLinkSecurityLib.Security
     private static void SignXml(XmlDocument xmlDoc, Pkcs12Store keyStore, string keyStorePasswort)
     {
       //Erstellung eines Zertifikatobjektes aus dem KeyStore:
+
       System.Security.Cryptography.X509Certificates.X509Certificate2 cert =
-        new System.Security.Cryptography.X509Certificates.X509Certificate2(CertHelper.ConvertPkcs12ToByteArray(keyStore, keyStorePasswort), keyStorePasswort);
+        new System.Security.Cryptography.X509Certificates.X509Certificate2(@"C:\TempFiveRx\TestDotNetClientZertifikat.pfx", "testc");
+      //new System.Security.Cryptography.X509Certificates.X509Certificate2(CertHelper.ConvertPkcs12ToByteArray(keyStore, keyStorePasswort), keyStorePasswort);
 
       //Xml Vorbereitung:
       xmlDoc.PreserveWhitespace = false;
@@ -151,6 +157,36 @@ namespace FiveRxLinkSecurityLib.Security
     }
 
     /// <summary>
+    /// Verifikation ob die Signatur des XML Dokumentes in Orndung ist und ob das Zertifikat mit welchem
+    /// das XML Dokument siginiert wurde mit dem zum Benutzer bekannnten Zertifikat übereinstimmt
+    /// </summary>
+    /// <param name="xmlDoc">signiertes XML Dokument</param>
+    /// <param name="keyStore">KeyStore der zum Signierer gehört</param>
+    /// <param name="keyStorePasswort">KeyStore Passwort</param>
+    /// <returns>Ist Signatur ok und entspricht das mitgeteilte Zertifikat dem jenigen der das Zertikat gesendet hat</returns>
+    private static bool VerifyXmlSignature(XmlDocument xmlDoc, Pkcs12Store keyStore, string keyStorePasswort)
+    {
+      //Erstellung eines Referenzzertifikates aus dem KeyStore:
+      System.Security.Cryptography.X509Certificates.X509Certificate2 cert =
+        new System.Security.Cryptography.X509Certificates.X509Certificate2(@"C:\TempFiveRx\TestDotNetClientZertifikat.pfx", "testc");
+      //new System.Security.Cryptography.X509Certificates.X509Certificate2(CertHelper.ConvertPkcs12ToByteArray(keyStore, keyStorePasswort), keyStorePasswort);
+
+      //Xml Vorbereitung:
+      xmlDoc.PreserveWhitespace = false;
+
+      SignedXml signedXml = new SignedXml(xmlDoc);
+      XmlNodeList signatureNodeList = xmlDoc.GetElementsByTagName("Signature");
+      signedXml.LoadXml((XmlElement)signatureNodeList[0]);
+
+      //Prüfung auf Signatur und Zertifikat:
+      //CheckSignatur(cert,true) => Prüft ob die Signatur in Ordnung ist
+      //CheckSignatur(cert,false) => Prüft ob die Signatur in Ordnung ist und ob das Zertifikat ok ist, welches im XML mit übergeben wird
+      //die funktioniert aber nur, wenn das Zertifikat im Zerifikatsspeicher unter Vertrauenswürdige Personen eingelagert ist
+      return signedXml.CheckSignature(cert, true);
+    }
+
+
+    /// <summary>
     /// Wandelt eine signierten XML Struktur in das urspprüngliche XML um
     /// </summary>
     /// <param name="signedXmlDocument">signierte XML Strukur</param>
@@ -163,27 +199,6 @@ namespace FiveRxLinkSecurityLib.Security
       return ParseHelper.ConvertXmlDocumentToString(signedXmlDocument);
     }
 
-    /// <summary>
-    /// Verifikation ob die Signatur des XML Dokumentes in Orndung ist und ob das Zertifikat mit welchem
-    /// das XML Dokument siginiert wurde mit dem zum Benutzer bekannnten Zertifikat übereinstimmt
-    /// </summary>
-    /// <param name="xmlDoc">signiertes XML Dokument</param>
-    /// <param name="keyStore">KeyStore der zum Signierer gehört</param>
-    /// <param name="keyStorePasswort">KeyStore Passwort</param>
-    /// <returns>Ist Signatur ok und entspricht das mitgeteilte Zertifikat dem jenigen der das Zertikat gesendet hat</returns>
-    private static bool VerifyXmlSignature(XmlDocument xmlDoc, Pkcs12Store keyStore, string keyStorePasswort)
-    {
-      //Erstellung eines Referenzzertifikates aus dem KeyStore:
-      System.Security.Cryptography.X509Certificates.X509Certificate2 cert =
-        new System.Security.Cryptography.X509Certificates.X509Certificate2(CertHelper.ConvertPkcs12ToByteArray(keyStore, keyStorePasswort), keyStorePasswort);
-
-      SignedXml signedXml = new SignedXml(xmlDoc);
-      XmlNodeList signatureNodeList = xmlDoc.GetElementsByTagName("Signature");
-      signedXml.LoadXml((XmlElement)signatureNodeList[0]);
-
-      //Prüfung auf Signatur und Zertifikat:
-      return signedXml.CheckSignature(cert, true);
-    }
 
     private static string GetEncryptionAlgorithmusValue(string encryptionAlgorithmusName)
     {
@@ -265,12 +280,17 @@ namespace FiveRxLinkSecurityLib.Security
     /// <param name="keyStorePasswort"></param>
     private static void DecryptXML(XmlDocument Doc, Pkcs12Store keyStore, string keyStorePasswort)
     {
-      //Erstellung des Zertifiaktes zur Verschlüsselung aus dem KeyStore
+
       System.Security.Cryptography.X509Certificates.X509Certificate2 cert =
-        new System.Security.Cryptography.X509Certificates.X509Certificate2(CertHelper.ConvertPkcs12ToByteArray(keyStore, keyStorePasswort), keyStorePasswort);
+          new System.Security.Cryptography.X509Certificates.X509Certificate2(CertHelper.ConvertPkcs12ToByteArray(keyStore, keyStorePasswort), keyStorePasswort);
+
 
       //Heranziehen des privaten Schlüssels:
-      RSACryptoServiceProvider privateKeyProvider = (RSACryptoServiceProvider)(cert.PrivateKey);
+
+      RSACryptoServiceProvider privateKeyProvider = null;
+
+      privateKeyProvider = (RSACryptoServiceProvider)(cert.PrivateKey);
+
 
       //Kompatibilität Java Anfang -->
 
@@ -333,13 +353,13 @@ namespace FiveRxLinkSecurityLib.Security
           keyName = "";
         }
       }
-
       // Kompatibilität Java Ende <--
 
       //Entschlüsselung:
       EncryptedXml exml = new EncryptedXml(Doc);
       exml.AddKeyNameMapping(keyName, privateKeyProvider);
       exml.DecryptDocument();
+
     }
 
     private static List<string> GetNodeEncryptionKeyNameCollection()

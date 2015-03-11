@@ -14,9 +14,9 @@ namespace FiverxLinkSecurityTestClient
     {
       //Demo.DemoServerZertifikat(true);
       //Demo.DemoClientZertifikat();
+      //Demo.DemoRzeAnfrage();
+      //Demo.DemoRzeAntwort();
       Demo.DemoServiceAnfrage();
-      Demo.DemoServiceAntwort();
-
     }
   }
 }

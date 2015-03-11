@@ -26,17 +26,18 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
     /// <param name="konfiguration">Sicherheitskonfiguration für die Verschlüsselung</param>
     /// <param name="rzCertificate">Zertifikat des Rechenzentrums</param>
     /// <returns></returns>
-    public static rzeAnfrage ErstelleRzeAnfrage(XmlDocument fachlicheAnfrageXml,
-                                                string apoIk,
-                                                string apoInformation,
-                                                string apoLogMethode,
-                                                string softwarehersteller,
-                                                string softwarename,
-                                                string softwareversion,
-                                                Pkcs12Store clientKeyStore,
-                                                string clientKeyStorePasswort,
-                                                SecurityKonfiguration konfiguration,
-                                                X509Certificate rzCertificate)
+    public static rzeAnfrage ErstelleRzeAnfrageObjekt(XmlDocument fachlicheAnfrageXml,
+                                                      string rzkdnr,
+                                                      string apoIk,
+                                                      string apoInformation,
+                                                      string apoLogMethode,
+                                                      string softwarehersteller,
+                                                      string softwarename,
+                                                      string softwareversion,
+                                                      Pkcs12Store clientKeyStore,
+                                                      string clientKeyStorePasswort,
+                                                      SecurityKonfiguration konfiguration,
+                                                      X509Certificate rzCertificate)
     {
       rzeAnfrage anfrage = new rzeAnfrage();
 
@@ -48,6 +49,7 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
 
       //Bilde das RzeAnfrage Objekt:
       apoInformation apoInfoObjekt = new apoInformation();
+      apoInfoObjekt.rzKdNr = rzkdnr;
       apoInfoObjekt.apoIk = apoIk;
       apoInfoObjekt.apoInfo = apoInformation;
       apoInfoObjekt.apoLogMethode = apoLogMethode;
@@ -73,14 +75,14 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
     /// <param name="istSignaturValide">Rückgabe ob die Signatur und das Zertifikat in Ordnung waren</param>
     /// <param name="istRohdatenTransfer">Rückgabe ob das signierte XML in die Rohdaten umgewandelt werden konnte</param>
     /// <returns></returns>
-    public static string VerifiziereRzeAnfrage(rzeAnfrage anfrage,
-                                               Pkcs12Store rzKeyStore,
-                                               string rzKeyStorePasswort,
-                                               Pkcs12Store clientKeyStore,
-                                               string clientKeyStorePasswort,
-                                               out bool istEntschluesselungErfolgreich,
-                                               out bool istSignaturValide,
-                                               out bool istRohdatenTransfer)
+    public static string VerifiziereRzeAnfrageObjekt(rzeAnfrage anfrage,
+                                                     Pkcs12Store rzKeyStore,
+                                                     string rzKeyStorePasswort,
+                                                     Pkcs12Store clientKeyStore,
+                                                     string clientKeyStorePasswort,
+                                                     out bool istEntschluesselungErfolgreich,
+                                                     out bool istSignaturValide,
+                                                     out bool istRohdatenTransfer)
     {
       istEntschluesselungErfolgreich = false;
       istSignaturValide = false;

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://fiverx.de/security/SV0100" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://fiverx.de/security/types" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://fiverx.de/security/SV0100/types" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://fiverx.de/security/SV0100" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://fiverx.de/security/SV0100">
+      <s:import namespace="http://fiverx.de/security/types" />
+      <s:element name="request" type="tns:ladeRzZertifikatRequest" />
+      <s:complexType name="ladeRzZertifikatRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ladeRzZertifikatRequestMsg" type="s1:zweiParameterRequestMsg" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="requestAuftrag" type="tns:verarbeiteAuftragRequest" />
+      <s:complexType name="verarbeiteAuftragRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="verarbeiteAuftragRequestMsg" type="s1:zweiParameterRequestMsg" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://fiverx.de/security/types">
+      <s:complexType name="zweiParameterRequestMsg">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeEingabeDaten" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeLadeRzSecurityVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="genericResponseMsg">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeAusgabeDaten" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://fiverx.de/security/SV0100/types">
+      <s:import namespace="http://fiverx.de/security/types" />
+      <s:element name="ladeRzZertifikatResponse" type="s2:ladeRzZertifikatResponse" />
+      <s:complexType name="ladeRzZertifikatResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ladeRzZertifikatResponseMsg" type="s1:genericResponseMsg" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="verarbeiteAuftragResponse" type="s2:verarbeiteAuftragResponse" />
+      <s:complexType name="verarbeiteAuftragResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="verarbeiteAuftragResponseMsg" type="s1:genericResponseMsg" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ladeRzZertifikatSoapIn">
+    <wsdl:part name="request" element="tns:request" />
+  </wsdl:message>
+  <wsdl:message name="ladeRzZertifikatSoapOut">
+    <wsdl:part name="ladeRzZertifikatResult" element="s2:ladeRzZertifikatResponse" />
+  </wsdl:message>
+  <wsdl:message name="verarbeiteAuftragSoapIn">
+    <wsdl:part name="requestAuftrag" element="tns:requestAuftrag" />
+  </wsdl:message>
+  <wsdl:message name="verarbeiteAuftragSoapOut">
+    <wsdl:part name="verarbeiteAuftragResult" element="s2:verarbeiteAuftragResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FiveRxLinkSecurityServiceSoap">
+    <wsdl:operation name="ladeRzZertifikat">
+      <wsdl:input message="tns:ladeRzZertifikatSoapIn" />
+      <wsdl:output message="tns:ladeRzZertifikatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="verarbeiteAuftrag">
+      <wsdl:input message="tns:verarbeiteAuftragSoapIn" />
+      <wsdl:output message="tns:verarbeiteAuftragSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FiveRxLinkSecurityServiceSoap" type="tns:FiveRxLinkSecurityServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ladeRzZertifikat">
+      <soap:operation soapAction="ladeRzZertifikatRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verarbeiteAuftrag">
+      <soap:operation soapAction="verarbeiteAuftragRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FiveRxLinkSecurityServiceSoap12" type="tns:FiveRxLinkSecurityServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ladeRzZertifikat">
+      <soap12:operation soapAction="ladeRzZertifikatRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verarbeiteAuftrag">
+      <soap12:operation soapAction="verarbeiteAuftragRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FiveRxLinkSecurityService">
+    <wsdl:port name="FiveRxLinkSecurityServiceSoap" binding="tns:FiveRxLinkSecurityServiceSoap">
+      <soap:address location="http://localhost:49439/FiveRxLinkSecurityService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FiveRxLinkSecurityServiceSoap12" binding="tns:FiveRxLinkSecurityServiceSoap12">
+      <soap12:address location="http://localhost:49439/FiveRxLinkSecurityService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
