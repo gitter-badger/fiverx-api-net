@@ -35,7 +35,7 @@ namespace FiveRxLinkSecurityLib.Security
 
       XmlHelper.EncryptXML(xmlDoc,
                            knotenZuVerschluesseln,
-                           konfiguration.XmlEncryptionKnotenInhaltVerschluesseln,
+                           konfiguration.XmlEncryptionNurInhaltDesZuVerschluesselndenKnotensVerschluesseln,
                            konfiguration.XmlEncryptionAesKeySize,
                            konfiguration.XmlEncryptionAesAlgorithmus,
                            konfiguration.XmlEncryptionUseOAEP,
@@ -59,8 +59,6 @@ namespace FiveRxLinkSecurityLib.Security
     public static void DecryptVerifyXMLAndGetRawData(byte[] encryptedData,
                                                      Pkcs12Store decryptionKeyStore,
                                                      string decryptionKeyStorePasswort,
-                                                     Pkcs12Store signKeyStore,
-                                                     string signKeyStorePasswort,
                                                      out bool istEntschluesselungErfolgreich,
                                                      out bool istSignaturValide,
                                                      out bool istRohdatenTransfer,
@@ -89,7 +87,8 @@ namespace FiveRxLinkSecurityLib.Security
       {
         try
         {
-          istSignaturValide = XmlHelper.VerifyXmlSignature(tmpXml, signKeyStore, signKeyStorePasswort);
+          istSignaturValide = XmlHelper.VerifyXmlSignature(tmpXml, decryptionKeyStore, decryptionKeyStorePasswort);
+          //istSignaturValide = XmlHelper.VerifyXmlSignature(tmpXml, signKeyStore, signKeyStorePasswort);
         }
         catch { }
       }
@@ -222,7 +221,7 @@ namespace FiveRxLinkSecurityLib.Security
     /// </summary>
     /// <param name="doc">zu verschlüsselndes XML Dokument</param>
     /// <param name="xmlElementToEncrypt">Knoten im XML Dokument der für die Verschlüsselung betrachtet werden soll</param>
-    /// <param name="knotenInhaltVerschluesseln">Soll nur der Inhalt (true) oder auch der Knoten selbst verschlüsselt werden (false)</param>
+    /// <param name="nurknotenInhaltVerschluesseln">Soll nur der Inhalt (true) oder auch der Knoten selbst verschlüsselt werden (false)</param>
     /// <param name="aesKeySize">Schlüsselstärke für die AES Verschlüsselung</param>
     /// <param name="aesAlgo">Algorithmus für die AES Verschlüsselung</param>
     /// <param name="useOAEP">Verwendung vom optimalen asymmetrischen Verschlüsselungs Padding</param>
@@ -231,7 +230,7 @@ namespace FiveRxLinkSecurityLib.Security
     /// <param name="keyStorePasswort">Passwort zum KeyStore</param>
     private static void EncryptXML(XmlDocument doc,
                                    string xmlElementToEncrypt,
-                                   bool knotenInhaltVerschluesseln,
+                                   bool nurknotenInhaltVerschluesseln,
                                    int aesKeySize,
                                    string aesAlgo,
                                    bool useOAEP,
@@ -250,7 +249,7 @@ namespace FiveRxLinkSecurityLib.Security
 
       //Asymmetrische Verschlüsselung des symmetrischen Schlüssels und der Daten:
       EncryptedXml eXml = new EncryptedXml();
-      byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, knotenInhaltVerschluesseln);
+      byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, nurknotenInhaltVerschluesseln);
       byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, publicKeyProvider, useOAEP);
 
       //Aufbereitung des verschlüsselten XMLs:
@@ -268,7 +267,7 @@ namespace FiveRxLinkSecurityLib.Security
       ek.KeyInfo.AddClause(kin);
       edElement.CipherData.CipherValue = encryptedElement;
 
-      EncryptedXml.ReplaceElement(elementToEncrypt, edElement, knotenInhaltVerschluesseln);
+      EncryptedXml.ReplaceElement(elementToEncrypt, edElement, nurknotenInhaltVerschluesseln);
     }
 
 

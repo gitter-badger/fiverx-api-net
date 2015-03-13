@@ -447,6 +447,16 @@ namespace FiveRxLinkSecurityLib.Security
     }
 
     /// <summary>
+    /// Umwandlung eines Zertifikates in ein ByteArray
+    /// </summary>
+    /// <param name="cert">Bouncy X509 Zertifikat</param>
+    /// <returns>Zertifikat als byte Array</returns>
+    public static byte[] ConvertX509ToByteArray(X509Certificate certificate)
+    {
+      return certificate.GetEncoded();
+    }
+
+    /// <summary>
     /// Konvertierung eines KeyStores in einen Base64String
     /// </summary>
     /// <param name="store">KeyStore im PKCS12 Format</param>
@@ -470,6 +480,22 @@ namespace FiveRxLinkSecurityLib.Security
         store.Save(pkcs12data, passwort.ToCharArray(), new SecureRandom());
         return pkcs12data.ToArray();
       }
+    }
+
+    /// <summary>
+    /// Konvertierung eines Pkcs12Stores im ByteArrayFormat in Pkcs12 Objekt
+    /// </summary>
+    /// <param name="pkcs12ByteArray"></param>
+    /// <param name="passwort"></param>
+    /// <returns></returns>
+    public static Pkcs12Store ConvertByteArrayToPkcs12Store(byte[] pkcs12ByteArray, string passwort)
+    {
+      Pkcs12Store keyStore;
+      using (Stream stream = new MemoryStream(pkcs12ByteArray))
+      {
+        keyStore = new Pkcs12Store(stream, passwort.ToCharArray());
+      }
+      return keyStore;
     }
 
 

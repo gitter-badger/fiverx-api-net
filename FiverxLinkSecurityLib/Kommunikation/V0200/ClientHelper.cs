@@ -8,7 +8,7 @@ using Org.BouncyCastle.X509;
 
 namespace FiverxLinkSecurityLib.Kommunikation.V0200
 {
-  public class FiveRxSecurityRequest
+  public class ClientHelper
   {
     /// <summary>
     /// Erstellt ein Objekt vom Typ rzeAnfrage für die Methode verarbeiteAuftrag. Hier erfolgt die Zusammenführung
@@ -62,27 +62,24 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
       return anfrage;
     }
 
+
+
     /// <summary>
-    /// Entschlüsselt die RzeAnfrage, verfiziert die Signatur und das Zerifikat mit dem die Signatur erstellt wurde.
-    /// Zudem wird aus dem signierten XML das urprüngliche Rohdaten XML gewonnen
+    /// 
     /// </summary>
-    /// <param name="anfrage">Anfrage als rzeAnfrage</param>
-    /// <param name="rzKeyStore">KeyStore des RZs</param>
-    /// <param name="rzKeyStorePasswort">Passwort zum KeyStore des RZs</param>
-    /// <param name="clientKeyStore">KeyStore des Clients</param>
-    /// <param name="clientKeyStorePasswort">Passwort zum KeyStore des Clients</param>
-    /// <param name="istEntschluesselungErfolgreich">Rückgabe ob die Entschlüsselung funktioniert hat</param>
-    /// <param name="istSignaturValide">Rückgabe ob die Signatur und das Zertifikat in Ordnung waren</param>
-    /// <param name="istRohdatenTransfer">Rückgabe ob das signierte XML in die Rohdaten umgewandelt werden konnte</param>
+    /// <param name="antwort"></param>
+    /// <param name="clientKeyStore"></param>
+    /// <param name="clientKeyStorePasswort"></param>
+    /// <param name="istEntschluesselungErfolgreich"></param>
+    /// <param name="istSignaturValide"></param>
+    /// <param name="istRohdatenTransfer"></param>
     /// <returns></returns>
-    public static string VerifiziereRzeAnfrageObjekt(rzeAnfrage anfrage,
-                                                     Pkcs12Store rzKeyStore,
-                                                     string rzKeyStorePasswort,
-                                                     Pkcs12Store clientKeyStore,
-                                                     string clientKeyStorePasswort,
-                                                     out bool istEntschluesselungErfolgreich,
-                                                     out bool istSignaturValide,
-                                                     out bool istRohdatenTransfer)
+    public static string VerifiziereServerAntwort(byte[] antwort,
+                                                  Pkcs12Store clientKeyStore,
+                                                  string clientKeyStorePasswort,
+                                                  out bool istEntschluesselungErfolgreich,
+                                                  out bool istSignaturValide,
+                                                  out bool istRohdatenTransfer)
     {
       istEntschluesselungErfolgreich = false;
       istSignaturValide = false;
@@ -90,9 +87,7 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
 
       string xmlAsString = null;
 
-      XmlHelper.DecryptVerifyXMLAndGetRawData(anfrage.rzDatenBox,
-                                              rzKeyStore,
-                                              rzKeyStorePasswort,
+      XmlHelper.DecryptVerifyXMLAndGetRawData(antwort,
                                               clientKeyStore,
                                               clientKeyStorePasswort,
                                               out istEntschluesselungErfolgreich,

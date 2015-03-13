@@ -3,7 +3,7 @@ namespace FiverxLinkSecurityLib.Security
 {
   public class SecurityKonfiguration
   {
-    public bool XmlEncryptionKnotenInhaltVerschluesseln { get; set; }
+    public bool XmlEncryptionNurInhaltDesZuVerschluesselndenKnotensVerschluesseln { get; set; }
     public int XmlEncryptionAesKeySize { get; set; }
     public string XmlEncryptionAesAlgorithmus { get; set; }
     public bool XmlEncryptionUseOAEP { get; set; }
@@ -13,8 +13,7 @@ namespace FiverxLinkSecurityLib.Security
     {
       //TODO: Vorläufe Vorabdefinition, Verlagerung in app.Config o. ähnliches und Anpassung an gewähten Algorithmus Auswahl Standard
 
-
-      XmlEncryptionKnotenInhaltVerschluesseln = true;
+      XmlEncryptionNurInhaltDesZuVerschluesselndenKnotensVerschluesseln = true;
       XmlEncryptionAesKeySize = 256;
       XmlEncryptionAesAlgorithmus = "XmlEncAES256Url";
       XmlEncryptionUseOAEP = true;

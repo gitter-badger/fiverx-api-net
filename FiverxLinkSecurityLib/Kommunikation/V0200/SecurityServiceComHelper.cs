@@ -6,7 +6,7 @@ using FiveRxLinkSecurityLib.Security;
 using Org.BouncyCastle.Pkcs;
 namespace FiverxLinkSecurityLib.Kommunikation.V0200
 {
-  public class FiveRxSecurityServiceHelper
+  public class SecurityServiceComHelper
   {
     public static FiveRxSecurityService.FiveRxLinkSecurityServiceSoapClient GetFiveRxServiceSecurityClient(string serviceAdresse,
                                                                                                            Pkcs12Store clientKeyStore,

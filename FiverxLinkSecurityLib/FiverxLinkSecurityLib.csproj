@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global\GlobalServiceParameters.cs" />
-    <Compile Include="Kommunikation\V0200\FiveRxSecurityRequest.cs" />
-    <Compile Include="Kommunikation\V0200\FiveRxSecurityResponse.cs" />
-    <Compile Include="Kommunikation\V0200\FiveRxSecurityServiceHelper.cs" />
+    <Compile Include="Kommunikation\V0200\ClientHelper.cs" />
+    <Compile Include="Kommunikation\V0200\ServerHelper.cs" />
+    <Compile Include="Kommunikation\V0200\SecurityServiceComHelper.cs" />
     <Compile Include="Schema\V0200\FiveRxSecurityBox_SV0100_16.cs">
       <DependentUpon>FiveRxSecurityBox_SV0100_16.xsd</DependentUpon>
     </Compile>
