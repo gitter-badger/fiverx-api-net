@@ -1,11 +1,10 @@
 ﻿
 using System;
 using System.Xml;
+using FiverxLinkSecurityLib.Global;
 using FiverxLinkSecurityLib.Kommunikation.V0200;
 using FiverxLinkSecurityLib.Schema.V0200;
 using FiverxLinkSecurityLib.Security;
-using FiveRxLinkSecurityLib.Global;
-using FiveRxLinkSecurityLib.Security;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.X509;
 
@@ -26,8 +25,8 @@ namespace FiverxLinkSecurityTestClient
     static string testXmlAnfrage = @"<Request><data>Dies ist eine Anfrage an den Server</data></Request>";
     static string testXmlAntwort = @"<Response><data>Dies ist eine Antwort an den Client</data></Response>";
 
-    //static string fiveRxServiceAdresse = @"https://ars-fiverx.de:80/FiveRxLinkSecurityService.asmx";
-    static string fiveRxServiceAdresse = @"http://localhost:49439/FiveRxLinkSecurityService.asmx";
+    static string fiveRxServiceAdresse = @"https://ars-fiverx.de:80/FiveRxLinkSecurityService.asmx";
+    //static string fiveRxServiceAdresse = @"http://localhost:49439/FiveRxLinkSecurityService.asmx";
 
     static string pfadAnfrageladeRzVersion = @"C:\TempFiveRx\ladeRzDienste.txt";
 
@@ -47,7 +46,7 @@ namespace FiverxLinkSecurityTestClient
       if (mitZertifikatErstellung)
       {
         //Zertikat und KeyStore erstellen:
-        rzCertificate = CertHelper.CreateCertificateAndKeyStore(FiveRxLinkSecurityLib.Global.Standards.HashType.SHA256withRSA,
+        rzCertificate = CertHelper.CreateCertificateAndKeyStore(FiverxLinkSecurityLib.Global.Standards.HashType.SHA256withRSA,
                                                                 rzCertAusteller,
                                                                 rzCertAusteller,
                                                                 ref passwort,
@@ -95,7 +94,7 @@ namespace FiverxLinkSecurityTestClient
       //Erstellen des Clientzertifikates:
       clientCertificate = CertHelper.CreateClientCertificateAndKeyStore(caKeyStore,
                                                                         caCertifikate,
-                                                                        FiveRxLinkSecurityLib.Global.Standards.HashType.SHA256withRSA,
+                                                                        FiverxLinkSecurityLib.Global.Standards.HashType.SHA256withRSA,
                                                                         clientAntragsteller,
                                                                         rzCertAusteller,
                                                                         ref passwort,
@@ -222,7 +221,7 @@ namespace FiverxLinkSecurityTestClient
 
     }
 
-    public static void DemoServiceAnfrage()
+    public static void DemoServiceAnfrageVerarbeiteAuftrag()
     {
       //Laden des Client KeyStores:
       Pkcs12Store clientkeyStore = CertHelper.LadePkcsStore(zertpfad + "\\" + clientCertDateiname + ".pfx", clientPasswort);
@@ -287,6 +286,63 @@ namespace FiverxLinkSecurityTestClient
                                                                  out istEntschluesselungErfolgreich,
                                                                  out istSignaturValide,
                                                                  out istSigniertesXmlValide);
+    }
+
+    public static void DemoServiceAnfrageLadeSicherheitsmerkmale()
+    {
+      //Laden des Client KeyStores:
+      Pkcs12Store clientkeyStore = CertHelper.LadePkcsStore(zertpfad + "\\" + clientCertDateiname + ".pfx", clientPasswort);
+
+      rzeLadeRzSicherheitsmerkmaleAnfrage anfrage = ClientHelper.ErstelleRzeLadeSicherheitsmerkmalAnfrage("9998",
+                                                                                                          "303706931",
+                                                                                                          "Testapotheke FiveRxSecurity",
+                                                                                                          "ladeRzVersion",
+                                                                                                          "Musterhersteller",
+                                                                                                          "Mustersoftware",
+                                                                                                          "Musterversion");
+
+      FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse antwort = null;
+
+      using (FiverxLinkSecurityLib.FiveRxSecurityService.FiveRxLinkSecurityServiceSoapClient client =
+                SecurityServiceComHelper.GetFiveRxServiceSecurityClient(fiveRxServiceAdresse, clientkeyStore, clientPasswort))
+      {
+        FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest request =
+          new FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest();
+        request.ladeRzSicherheitsmerkmaleRequestMsg = new FiverxLinkSecurityLib.FiveRxSecurityService.zweiParameterRequestMsg();
+        request.ladeRzSicherheitsmerkmaleRequestMsg.rzeEingabeDaten = ParseHelper.GetStringFromXMLObject<rzeLadeRzSicherheitsmerkmaleAnfrage>(anfrage);
+        antwort = client.ladeRzSicherheitsmerkmale(request);
+      }
+
+      rzeLadeRzSicherheitsmerkmaleAntwort sicherheitsmerkmale = ParseHelper.GetObjectFromXML<rzeLadeRzSicherheitsmerkmaleAntwort>(antwort.ladeRzSicherheitsmerkmaleResponseMsg.rzeAusgabeDaten);
+
+    }
+
+    public static void DemoServiceAnfrageLadeRzSecurityVersion()
+    {
+      Pkcs12Store clientkeyStore = CertHelper.LadePkcsStore(zertpfad + "\\" + clientCertDateiname + ".pfx", clientPasswort);
+
+      rzeLadeRzSecurityVersionAnfrage anfrage = ClientHelper.ErstelleRzeLadeRzSecurityVersionAnfrage("9998",
+                                                                                                  "303706931",
+                                                                                                  "Testapotheke FiveRxSecurity",
+                                                                                                  "ladeRzVersion",
+                                                                                                  "Musterhersteller",
+                                                                                                  "Mustersoftware",
+                                                                                                  "Musterversion");
+
+      FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSecurityVersionResponse antwort = null;
+
+      using (FiverxLinkSecurityLib.FiveRxSecurityService.FiveRxLinkSecurityServiceSoapClient client =
+                SecurityServiceComHelper.GetFiveRxServiceSecurityClient(fiveRxServiceAdresse, clientkeyStore, clientPasswort))
+      {
+        FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSecurityVersionRequest request =
+          new FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSecurityVersionRequest();
+        request.ladeRzSecurityVersionRequestMsg = new FiverxLinkSecurityLib.FiveRxSecurityService.einParameterRequestMsg();
+        request.ladeRzSecurityVersionRequestMsg.rzeEingabeDaten = ParseHelper.GetStringFromXMLObject<rzeLadeRzSecurityVersionAnfrage>(anfrage);
+        antwort = client.ladeRzSecurityVersion(request);
+      }
+
+      rzeLadeRzSecurityVersionAntwort securityVersion = ParseHelper.GetObjectFromXML<rzeLadeRzSecurityVersionAntwort>(antwort.ladeRzSecurityVersionResponseMsg.rzeAusgabeDaten);
+
     }
   }
 }

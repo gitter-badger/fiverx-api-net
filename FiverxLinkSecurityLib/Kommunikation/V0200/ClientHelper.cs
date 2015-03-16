@@ -1,8 +1,7 @@
 ﻿using System.Xml;
+using FiverxLinkSecurityLib.Global;
 using FiverxLinkSecurityLib.Schema.V0200;
 using FiverxLinkSecurityLib.Security;
-using FiveRxLinkSecurityLib.Global;
-using FiveRxLinkSecurityLib.Security;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.X509;
 
@@ -16,6 +15,7 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
     /// Dokument signiert und verschlüsselt und als Byte Array in dem Anfrage Objekt abgelegt.
     /// </summary>
     /// <param name="fachlicheAnfrageXml">Xml nach dem Schema RzeRezept Version xxxx</param>
+    /// <param name="rzkdnr">Kundennummer der Apotheke</param>
     /// <param name="apoIk">ApothekenIK</param>
     /// <param name="apoInformation">Information zur Apotheke</param>
     /// <param name="apoLogMethode">Methode im fachlichen Sinne, welche die Apotheke beabsichtigt anzusprechen</param>
@@ -23,6 +23,7 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
     /// <param name="softwarename">Name der Warenwirtschaft</param>
     /// <param name="softwareversion">Version der Warenwirtschaft</param>
     /// <param name="clientKeyStore">KeyStore mit dessen Informationen das XML verschlüsselt werden soll</param>
+    /// <param name="clientKeyStorePasswort">Passwort zum KeyStore des Clients</param>
     /// <param name="konfiguration">Sicherheitskonfiguration für die Verschlüsselung</param>
     /// <param name="rzCertificate">Zertifikat des Rechenzentrums</param>
     /// <returns></returns>
@@ -59,6 +60,77 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
       anfrage.apoInformation = apoInfoObjekt;
       anfrage.rzDatenBox = Standards.DefEncoding.GetBytes(ParseHelper.ConvertXmlDocumentToString(fachlicheAnfrageXml));
 
+      return anfrage;
+    }
+
+
+    /// <summary>
+    /// Erstellt ein Objekt vom Typ rzeLadeRzSicherheitsmerkmalAnfrage, welches notwendig ist um
+    /// die Methode ladeRzSicherheitsmerkmale anzusprechen
+    /// </summary>
+    /// <param name="fachlicheAnfrageXml">Xml nach dem Schema RzeRezept Version xxxx</param>
+    /// <param name="rzkdnr">Kundennummer der Apotheke</param>
+    /// <param name="apoIk">ApothekenIK</param>
+    /// <param name="apoInformation">Information zur Apotheke</param>
+    /// <param name="apoLogMethode">Methode im fachlichen Sinne, welche die Apotheke beabsichtigt anzusprechen</param>
+    /// <param name="softwarehersteller">Hersteller der Warenwirtschaft</param>
+    /// <param name="softwarename">Name der Warenwirtschaft</param>
+    /// <param name="softwareversion">Version der Warenwirtschaft</param>
+    /// <returns></returns>
+    public static rzeLadeRzSicherheitsmerkmaleAnfrage ErstelleRzeLadeSicherheitsmerkmalAnfrage(string rzkdnr,
+                                                                                               string apoIk,
+                                                                                               string apoInformation,
+                                                                                               string apoLogMethode,
+                                                                                               string softwarehersteller,
+                                                                                               string softwarename,
+                                                                                               string softwareversion)
+    {
+      apoInformation apoInfoObjekt = new apoInformation();
+      apoInfoObjekt.rzKdNr = rzkdnr;
+      apoInfoObjekt.apoIk = apoIk;
+      apoInfoObjekt.apoInfo = apoInformation;
+      apoInfoObjekt.apoLogMethode = apoLogMethode;
+      apoInfoObjekt.apoSwHersteller = softwarehersteller;
+      apoInfoObjekt.apoSwName = softwarename;
+      apoInfoObjekt.apoSwVersion = softwareversion;
+
+      rzeLadeRzSicherheitsmerkmaleAnfrage anfrage = new rzeLadeRzSicherheitsmerkmaleAnfrage();
+      anfrage.apoInformation = apoInfoObjekt;
+      return anfrage;
+    }
+
+    /// <summary>
+    /// ERstellt ein Objekt vom Typ rzeLadeRzSecurityVersionAnfrage, welches notwendig ist um die Methode
+    /// ladeRzSecurityVersion anzusprechen
+    /// </summary>
+    /// <param name="fachlicheAnfrageXml">Xml nach dem Schema RzeRezept Version xxxx</param>
+    /// <param name="rzkdnr">Kundennummer der Apotheke</param>
+    /// <param name="apoIk">ApothekenIK</param>
+    /// <param name="apoInformation">Information zur Apotheke</param>
+    /// <param name="apoLogMethode">Methode im fachlichen Sinne, welche die Apotheke beabsichtigt anzusprechen</param>
+    /// <param name="softwarehersteller">Hersteller der Warenwirtschaft</param>
+    /// <param name="softwarename">Name der Warenwirtschaft</param>
+    /// <param name="softwareversion">Version der Warenwirtschaft</param>
+    /// <returns></returns>
+    public static rzeLadeRzSecurityVersionAnfrage ErstelleRzeLadeRzSecurityVersionAnfrage(string rzkdnr,
+                                                                                               string apoIk,
+                                                                                               string apoInformation,
+                                                                                               string apoLogMethode,
+                                                                                               string softwarehersteller,
+                                                                                               string softwarename,
+                                                                                               string softwareversion)
+    {
+      apoInformation apoInfoObjekt = new apoInformation();
+      apoInfoObjekt.rzKdNr = rzkdnr;
+      apoInfoObjekt.apoIk = apoIk;
+      apoInfoObjekt.apoInfo = apoInformation;
+      apoInfoObjekt.apoLogMethode = apoLogMethode;
+      apoInfoObjekt.apoSwHersteller = softwarehersteller;
+      apoInfoObjekt.apoSwName = softwarename;
+      apoInfoObjekt.apoSwVersion = softwareversion;
+
+      rzeLadeRzSecurityVersionAnfrage anfrage = new rzeLadeRzSecurityVersionAnfrage();
+      anfrage.apoInformation = apoInfoObjekt;
       return anfrage;
     }
 

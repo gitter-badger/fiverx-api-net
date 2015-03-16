@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using FiverxLinkSecurityLib.BouncyCastle;
-using FiveRxLinkSecurityLib.Global;
+using FiverxLinkSecurityLib.Global;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.Crypto.Parameters;
@@ -12,7 +12,7 @@ using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
 
-namespace FiveRxLinkSecurityLib.Security
+namespace FiverxLinkSecurityLib.Security
 {
   public class KeyHelper
   {

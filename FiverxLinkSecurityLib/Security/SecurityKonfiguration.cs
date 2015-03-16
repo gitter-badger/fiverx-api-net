@@ -15,9 +15,9 @@ namespace FiverxLinkSecurityLib.Security
 
       XmlEncryptionNurInhaltDesZuVerschluesselndenKnotensVerschluesseln = true;
       XmlEncryptionAesKeySize = 256;
-      XmlEncryptionAesAlgorithmus = "XmlEncAES256Url";
+      XmlEncryptionAesAlgorithmus = "http://www.w3.org/2001/04/xmlenc#aes256-cbc";
       XmlEncryptionUseOAEP = true;
-      XmlEncryptionRsaAlgorithmus = "XmlEncRSAOAEPUrl";
+      XmlEncryptionRsaAlgorithmus = "http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p";
     }
   }
 }

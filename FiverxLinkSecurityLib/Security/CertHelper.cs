@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using FiveRxLinkSecurityLib.Global;
+using FiverxLinkSecurityLib.Global;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Math;
@@ -14,7 +14,7 @@ using Org.BouncyCastle.X509;
 using Org.BouncyCastle.X509.Extension;
 using Org.BouncyCastle.X509.Store;
 
-namespace FiveRxLinkSecurityLib.Security
+namespace FiverxLinkSecurityLib.Security
 {
   public class CertHelper
   {

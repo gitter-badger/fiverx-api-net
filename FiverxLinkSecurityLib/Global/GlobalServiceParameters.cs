@@ -1,5 +1,5 @@
 ﻿
-namespace FiveRxLinkSecurityLib.Global
+namespace FiverxLinkSecurityLib.Global
 {
   /// <remarks/>
   [System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.0.30319.17929")]

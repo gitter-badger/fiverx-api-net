@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace FiveRxLinkSecurityLib.Global
+namespace FiverxLinkSecurityLib.Global
 {
   public class Standards
   {

@@ -16,7 +16,9 @@ namespace FiverxLinkSecurityTestClient
       //Demo.DemoClientZertifikat();
       //Demo.DemoRzeAnfrage();
       //Demo.DemoRzeAntwort();
-      Demo.DemoServiceAnfrage();
+      Demo.DemoServiceAnfrageVerarbeiteAuftrag();
+      Demo.DemoServiceAnfrageLadeSicherheitsmerkmale();
+      Demo.DemoServiceAnfrageLadeRzSecurityVersion();
     }
   }
 }

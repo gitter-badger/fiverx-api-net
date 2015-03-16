@@ -63,6 +63,24 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService.wsdl" />
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

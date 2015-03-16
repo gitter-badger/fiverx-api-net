@@ -1,4 +1,5 @@
 C:\develop\FiveRX\Trunk\fiverx-api-net\bin\Debug\fiverx-api-net.dll
 C:\develop\FiveRX\Trunk\fiverx-api-net\bin\Debug\fiverx-api-net.pdb
+C:\develop\FiveRX\Trunk\fiverx-api-net\obj\Debug\fiverx-api-net.csprojResolveAssemblyReference.cache
 C:\develop\FiveRX\Trunk\fiverx-api-net\obj\Debug\fiverx-api-net.dll
 C:\develop\FiveRX\Trunk\fiverx-api-net\obj\Debug\fiverx-api-net.pdb

@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace FiveRxLinkSecurityLib.Global
+namespace FiverxLinkSecurityLib.Global
 {
   public class ParseHelper
   {

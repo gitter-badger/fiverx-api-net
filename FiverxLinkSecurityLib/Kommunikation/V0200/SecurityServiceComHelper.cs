@@ -2,7 +2,7 @@
 using System;
 using System.Net;
 using System.ServiceModel;
-using FiveRxLinkSecurityLib.Security;
+using FiverxLinkSecurityLib.Security;
 using Org.BouncyCastle.Pkcs;
 namespace FiverxLinkSecurityLib.Kommunikation.V0200
 {

@@ -77,6 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assemblies\BouncyCastle.Crypto.dll" />
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSecurityVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService1.disco" />
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzZertifikatResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

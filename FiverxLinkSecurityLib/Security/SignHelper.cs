@@ -1,10 +1,10 @@
 ﻿using System;
-using FiveRxLinkSecurityLib.Global;
+using FiverxLinkSecurityLib.Global;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 
-namespace FiveRxLinkSecurityLib.Security
+namespace FiverxLinkSecurityLib.Security
 {
   public class SignHelper
   {

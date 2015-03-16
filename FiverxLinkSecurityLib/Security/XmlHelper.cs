@@ -5,12 +5,11 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 using System.Xml;
-using FiverxLinkSecurityLib.Security;
-using FiveRxLinkSecurityLib.Global;
+using FiverxLinkSecurityLib.Global;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.X509;
 
-namespace FiveRxLinkSecurityLib.Security
+namespace FiverxLinkSecurityLib.Security
 {
   public class XmlHelper
   {
@@ -241,24 +240,31 @@ namespace FiveRxLinkSecurityLib.Security
 
       //Heranziehen des öffentlichen Schlüssels:
       RSACryptoServiceProvider publicKeyProvider = KeyHelper.ConvertAsymmetricKeyParameterToRSACryptoServiceProvider(certEncryptInfo.GetPublicKey());
+      SymmetricAlgorithm aesAlgorithmus = SymmetricAlgorithm.Create(aesAlgo);
 
       //Definition des symmetrischen Verschlüsselungsverfahren:
+
       XmlElement elementToEncrypt = doc.GetElementsByTagName(xmlElementToEncrypt)[0] as XmlElement;
       RijndaelManaged sessionKey = new RijndaelManaged();
-      sessionKey.KeySize = aesKeySize;
+
+      sessionKey.KeySize = aesAlgorithmus.KeySize;
 
       //Asymmetrische Verschlüsselung des symmetrischen Schlüssels und der Daten:
       EncryptedXml eXml = new EncryptedXml();
+
       byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, nurknotenInhaltVerschluesseln);
+      //byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, symalgorithmus, nurknotenInhaltVerschluesseln);
+
+      //byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, publicKeyProvider, useOAEP);
       byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, publicKeyProvider, useOAEP);
 
       //Aufbereitung des verschlüsselten XMLs:
       EncryptedData edElement = new EncryptedData();
       edElement.Type = EncryptedXml.XmlEncNamespaceUrl;
-      edElement.EncryptionMethod = new EncryptionMethod(GetEncryptionAlgorithmusValue(aesAlgo));
+      edElement.EncryptionMethod = new EncryptionMethod(/*GetEncryptionAlgorithmusValue(*/aesAlgo/*)*/);
       EncryptedKey ek = new EncryptedKey();
       ek.CipherData = new CipherData(encryptedKey);
-      ek.EncryptionMethod = new EncryptionMethod(GetEncryptionAlgorithmusValue(rsaAlgo));
+      ek.EncryptionMethod = new EncryptionMethod(/*GetEncryptionAlgorithmusValue(*/rsaAlgo/*)*/);
       edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
 
       //Zur Java Kompatibilität:

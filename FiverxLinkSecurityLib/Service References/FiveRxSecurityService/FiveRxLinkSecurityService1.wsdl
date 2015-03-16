@@ -3,10 +3,22 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://fiverx.de/security/SV0100">
       <s:import namespace="http://fiverx.de/security/types" />
-      <s:element name="request" type="tns:ladeRzZertifikatRequest" />
+      <s:element name="requestSecurityVersion" type="tns:ladeRzSecurityVersionRequest" />
+      <s:complexType name="ladeRzSecurityVersionRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ladeRzSecurityVersionRequestMsg" type="s1:einParameterRequestMsg" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="requestladeRzZertifikat" type="tns:ladeRzZertifikatRequest" />
       <s:complexType name="ladeRzZertifikatRequest">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="ladeRzZertifikatRequestMsg" type="s1:zweiParameterRequestMsg" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="requestladeRzSicherheitsmerkmal" type="tns:ladeRzSicherheitsmerkmaleRequest" />
+      <s:complexType name="ladeRzSicherheitsmerkmaleRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ladeRzSicherheitsmerkmaleRequestMsg" type="s1:zweiParameterRequestMsg" />
         </s:sequence>
       </s:complexType>
       <s:element name="requestAuftrag" type="tns:verarbeiteAuftragRequest" />
@@ -17,10 +29,9 @@
       </s:complexType>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://fiverx.de/security/types">
-      <s:complexType name="zweiParameterRequestMsg">
+      <s:complexType name="einParameterRequestMsg">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeEingabeDaten" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeLadeRzSecurityVersion" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="genericResponseMsg">
@@ -28,13 +39,31 @@
           <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeAusgabeDaten" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="zweiParameterRequestMsg">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeEingabeDaten" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rzeLadeRzSecurityVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://fiverx.de/security/SV0100/types">
       <s:import namespace="http://fiverx.de/security/types" />
+      <s:element name="ladeRzSecurityVersionResponse" type="s2:ladeRzSecurityVersionResponse" />
+      <s:complexType name="ladeRzSecurityVersionResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ladeRzSecurityVersionResponseMsg" type="s1:genericResponseMsg" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ladeRzZertifikatResponse" type="s2:ladeRzZertifikatResponse" />
       <s:complexType name="ladeRzZertifikatResponse">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="ladeRzZertifikatResponseMsg" type="s1:genericResponseMsg" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ladeRzSicherheitsmerkmaleResponse" type="s2:ladeRzSicherheitsmerkmaleResponse" />
+      <s:complexType name="ladeRzSicherheitsmerkmaleResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ladeRzSicherheitsmerkmaleResponseMsg" type="s1:genericResponseMsg" />
         </s:sequence>
       </s:complexType>
       <s:element name="verarbeiteAuftragResponse" type="s2:verarbeiteAuftragResponse" />
@@ -45,11 +74,23 @@
       </s:complexType>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="ladeRzSecurityVersionSoapIn">
+    <wsdl:part name="requestSecurityVersion" element="tns:requestSecurityVersion" />
+  </wsdl:message>
+  <wsdl:message name="ladeRzSecurityVersionSoapOut">
+    <wsdl:part name="ladeRzSecurityVersionResult" element="s2:ladeRzSecurityVersionResponse" />
+  </wsdl:message>
   <wsdl:message name="ladeRzZertifikatSoapIn">
-    <wsdl:part name="request" element="tns:request" />
+    <wsdl:part name="requestladeRzZertifikat" element="tns:requestladeRzZertifikat" />
   </wsdl:message>
   <wsdl:message name="ladeRzZertifikatSoapOut">
     <wsdl:part name="ladeRzZertifikatResult" element="s2:ladeRzZertifikatResponse" />
+  </wsdl:message>
+  <wsdl:message name="ladeRzSicherheitsmerkmaleSoapIn">
+    <wsdl:part name="requestladeRzSicherheitsmerkmal" element="tns:requestladeRzSicherheitsmerkmal" />
+  </wsdl:message>
+  <wsdl:message name="ladeRzSicherheitsmerkmaleSoapOut">
+    <wsdl:part name="ladeRzSicherheitsmerkmaleResult" element="s2:ladeRzSicherheitsmerkmaleResponse" />
   </wsdl:message>
   <wsdl:message name="verarbeiteAuftragSoapIn">
     <wsdl:part name="requestAuftrag" element="tns:requestAuftrag" />
@@ -58,9 +99,17 @@
     <wsdl:part name="verarbeiteAuftragResult" element="s2:verarbeiteAuftragResponse" />
   </wsdl:message>
   <wsdl:portType name="FiveRxLinkSecurityServiceSoap">
+    <wsdl:operation name="ladeRzSecurityVersion">
+      <wsdl:input message="tns:ladeRzSecurityVersionSoapIn" />
+      <wsdl:output message="tns:ladeRzSecurityVersionSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ladeRzZertifikat">
       <wsdl:input message="tns:ladeRzZertifikatSoapIn" />
       <wsdl:output message="tns:ladeRzZertifikatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ladeRzSicherheitsmerkmale">
+      <wsdl:input message="tns:ladeRzSicherheitsmerkmaleSoapIn" />
+      <wsdl:output message="tns:ladeRzSicherheitsmerkmaleSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="verarbeiteAuftrag">
       <wsdl:input message="tns:verarbeiteAuftragSoapIn" />
@@ -69,8 +118,26 @@
   </wsdl:portType>
   <wsdl:binding name="FiveRxLinkSecurityServiceSoap" type="tns:FiveRxLinkSecurityServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ladeRzSecurityVersion">
+      <soap:operation soapAction="ladeRzSecurityVersionRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ladeRzZertifikat">
       <soap:operation soapAction="ladeRzZertifikatRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ladeRzSicherheitsmerkmale">
+      <soap:operation soapAction="ladeRzSicherheitsmerkmaleRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -90,8 +157,26 @@
   </wsdl:binding>
   <wsdl:binding name="FiveRxLinkSecurityServiceSoap12" type="tns:FiveRxLinkSecurityServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ladeRzSecurityVersion">
+      <soap12:operation soapAction="ladeRzSecurityVersionRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ladeRzZertifikat">
       <soap12:operation soapAction="ladeRzZertifikatRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ladeRzSicherheitsmerkmale">
+      <soap12:operation soapAction="ladeRzSicherheitsmerkmaleRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

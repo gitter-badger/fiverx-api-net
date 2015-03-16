@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
-using FiveRxLinkSecurityLib.Global;
+using FiverxLinkSecurityLib.Global;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.IO;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
 
-namespace FiveRxLinkSecurityLib.Security
+namespace FiverxLinkSecurityLib.Security
 {
   public class CryptoHelper
   {
