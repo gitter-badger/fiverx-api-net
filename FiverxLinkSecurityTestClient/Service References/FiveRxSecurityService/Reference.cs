@@ -20,32 +20,20 @@ namespace FiverxLinkSecurityTestClient.FiveRxSecurityService {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse1 ladeRzSecurityVersion(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionRequest1 request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="ladeRzSecurityVersionRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse1> ladeRzSecurityVersionAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionRequest1 request);
-        
         // CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang ladeRzZertifikat weder in RPC noch in einem Dokument eingeschlossen ist.
         [System.ServiceModel.OperationContractAttribute(Action="ladeRzZertifikatRequest", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1 ladeRzZertifikat(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatRequest1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="ladeRzZertifikatRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1> ladeRzZertifikatAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatRequest1 request);
         
         // CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang ladeRzSicherheitsmerkmale weder in RPC noch in einem Dokument eingeschlossen ist.
         [System.ServiceModel.OperationContractAttribute(Action="ladeRzSicherheitsmerkmaleRequest", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse1 ladeRzSicherheitsmerkmale(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest1 request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="ladeRzSicherheitsmerkmaleRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse1> ladeRzSicherheitsmerkmaleAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest1 request);
-        
         // CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang verarbeiteAuftrag weder in RPC noch in einem Dokument eingeschlossen ist.
         [System.ServiceModel.OperationContractAttribute(Action="verarbeiteAuftragRequest", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse1 verarbeiteAuftrag(FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragRequest1 request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="verarbeiteAuftragRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse1> verarbeiteAuftragAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragRequest1 request);
     }
     
     /// <remarks/>
@@ -590,17 +578,6 @@ namespace FiverxLinkSecurityTestClient.FiveRxSecurityService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse1> FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap.ladeRzSecurityVersionAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionRequest1 request) {
-            return base.Channel.ladeRzSecurityVersionAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse1> ladeRzSecurityVersionAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionRequest requestSecurityVersion) {
-            FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionRequest1 inValue = new FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionRequest1();
-            inValue.requestSecurityVersion = requestSecurityVersion;
-            return ((FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap)(this)).ladeRzSecurityVersionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1 FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap.ladeRzZertifikat(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatRequest1 request) {
             return base.Channel.ladeRzZertifikat(request);
         }
@@ -610,17 +587,6 @@ namespace FiverxLinkSecurityTestClient.FiveRxSecurityService {
             inValue.requestladeRzZertifikat = requestladeRzZertifikat;
             FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1 retVal = ((FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap)(this)).ladeRzZertifikat(inValue);
             return retVal.ladeRzZertifikatResponse;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1> FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap.ladeRzZertifikatAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatRequest1 request) {
-            return base.Channel.ladeRzZertifikatAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1> ladeRzZertifikatAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatRequest requestladeRzZertifikat) {
-            FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatRequest1 inValue = new FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatRequest1();
-            inValue.requestladeRzZertifikat = requestladeRzZertifikat;
-            return ((FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap)(this)).ladeRzZertifikatAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -636,17 +602,6 @@ namespace FiverxLinkSecurityTestClient.FiveRxSecurityService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse1> FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap.ladeRzSicherheitsmerkmaleAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest1 request) {
-            return base.Channel.ladeRzSicherheitsmerkmaleAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse1> ladeRzSicherheitsmerkmaleAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest requestladeRzSicherheitsmerkmal) {
-            FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest1 inValue = new FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleRequest1();
-            inValue.requestladeRzSicherheitsmerkmal = requestladeRzSicherheitsmerkmal;
-            return ((FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap)(this)).ladeRzSicherheitsmerkmaleAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse1 FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap.verarbeiteAuftrag(FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragRequest1 request) {
             return base.Channel.verarbeiteAuftrag(request);
         }
@@ -656,17 +611,6 @@ namespace FiverxLinkSecurityTestClient.FiveRxSecurityService {
             inValue.requestAuftrag = requestAuftrag;
             FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse1 retVal = ((FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap)(this)).verarbeiteAuftrag(inValue);
             return retVal.verarbeiteAuftragResponse;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse1> FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap.verarbeiteAuftragAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragRequest1 request) {
-            return base.Channel.verarbeiteAuftragAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse1> verarbeiteAuftragAsync(FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragRequest requestAuftrag) {
-            FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragRequest1 inValue = new FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragRequest1();
-            inValue.requestAuftrag = requestAuftrag;
-            return ((FiverxLinkSecurityTestClient.FiveRxSecurityService.FiveRxLinkSecurityServiceSoap)(this)).verarbeiteAuftragAsync(inValue);
         }
     }
 }

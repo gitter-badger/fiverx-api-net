@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d5eb5091-a01e-4cb4-80ac-45a16d132f7c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.50.158:93/ZertifikatService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ZertifikatService.xsd" MetadataType="Schema" ID="e30f335a-99ff-4496-a8f9-15fd9567a204" SourceId="1" SourceUrl="http://192.168.50.158:93/ZertifikatService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ZertifikatService1.xsd" MetadataType="Schema" ID="763f8a54-e57b-4135-ae8f-170657f5f821" SourceId="1" SourceUrl="http://192.168.50.158:93/ZertifikatService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ZertifikatService.wsdl" MetadataType="Wsdl" ID="86a8855c-4a99-49ac-a01c-cc25c38ddf94" SourceId="1" SourceUrl="http://192.168.50.158:93/ZertifikatService.svc?wsdl" />
+    <MetadataFile FileName="ZertifikatService2.xsd" MetadataType="Schema" ID="38144480-5e35-4210-a0d2-e82a0f6bf1bc" SourceId="1" SourceUrl="http://192.168.50.158:93/ZertifikatService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ZertifikatService.disco" MetadataType="Disco" ID="0f0b7e0d-8293-4f18-879d-31e39934ffee" SourceId="1" SourceUrl="http://192.168.50.158:93/ZertifikatService.svc?disco" />
+    <MetadataFile FileName="ZertifikatService3.xsd" MetadataType="Schema" ID="ed7a828f-cd78-41b7-b143-81d6dda58221" SourceId="1" SourceUrl="http://192.168.50.158:93/ZertifikatService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -9,12 +9,29 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FiverxLinkSecurityTestClient</RootNamespace>
     <AssemblyName>FiverxLinkSecurityTestClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\developPublish\FiveRxDemoClient\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +51,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>BF371E3CB15AE054428A72BB169F6BA39BB7BDED</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>FiverxLinkSecurityTestClient_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto">
@@ -59,33 +88,49 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ZertifikatService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="FiverxLinkSecurityTestClient_TemporaryKey.pfx" />
     <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService.wsdl" />
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSecurityVersionResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.ladeRzZertifikatResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityTestClient.FiveRxSecurityService.verarbeiteAuftragResponse1.datasource">
+    <None Include="Service References\ZertifikatService\FiverxLinkSecurityTestClient.ZertifikatService.ClientCertificate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ZertifikatService\FiverxLinkSecurityTestClient.ZertifikatService.ServerCertificate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ZertifikatService\FiverxLinkSecurityTestClient.ZertifikatService.Sicherheitsmerkmale.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ZertifikatService\ZertifikatService.wsdl" />
+    <None Include="Service References\ZertifikatService\ZertifikatService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZertifikatService\ZertifikatService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZertifikatService\ZertifikatService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZertifikatService\ZertifikatService3.xsd">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -98,7 +143,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\FiveRxSecurityService\" />
+    <WCFMetadataStorage Include="Service References\ZertifikatService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService.disco" />
@@ -114,6 +177,21 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZertifikatService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZertifikatService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZertifikatService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZertifikatService\ZertifikatService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

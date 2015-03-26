@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ArsZertifikatService.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ArsZertifikatService.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.50.158:93/ZertifikatService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ClientCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Algorithmus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApoIk" type="xs:int" />
+      <xs:element minOccurs="0" name="ApoNr" type="xs:int" />
+      <xs:element minOccurs="0" name="Ausstellungsdatum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Fingerabdruck" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GueltigBis" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GueltigVon" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IstAktiviert" type="xs:boolean" />
+      <xs:element minOccurs="0" name="KeyStoreBlob" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PIN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passwort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Seriennummer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZertifikatHashcode" type="xs:int" />
+      <xs:element minOccurs="0" name="ZertifikateBlob" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientCertificate" nillable="true" type="tns:ClientCertificate" />
+  <xs:complexType name="ArrayOfServerCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServerCertificate" nillable="true" type="tns:ServerCertificate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServerCertificate" nillable="true" type="tns:ArrayOfServerCertificate" />
+  <xs:complexType name="ServerCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Algorithmus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ausstellungsdatum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Fingerabdruck" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GueltigBis" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GueltigVon" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IstAktiviert" type="xs:boolean" />
+      <xs:element minOccurs="0" name="KeyStoreBlob" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Passwort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Seriennummer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZertifikateBlob" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerCertificate" nillable="true" type="tns:ServerCertificate" />
+  <xs:complexType name="Sicherheitsmerkmale">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Hashfunktionen" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Signaturalgorithmen" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Verschluesselungsalgorithmen" nillable="true" type="q3:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sicherheitsmerkmale" nillable="true" type="tns:Sicherheitsmerkmale" />
+</xs:schema>

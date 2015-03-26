@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.50.158:93/ZertifikatService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ArsZertifikatService.Contracts" />
+  <xs:element name="ClientZertifikatHinzufuegen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="x509cert" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="keyStore" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="passwort" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="istAktiviert" type="xs:boolean" />
+        <xs:element minOccurs="0" name="serverZertifikatId" type="xs:int" />
+        <xs:element minOccurs="0" name="ausstellungsdatum" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="apoNr" type="xs:int" />
+        <xs:element minOccurs="0" name="apoIk" type="xs:int" />
+        <xs:element minOccurs="0" name="zertifikatHashCode" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClientZertifikatHinzufuegenResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServerZertifikatHinzufuegen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="x509cert" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="keyStore" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="passwort" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="istAktiviert" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ausstellungsdatum" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServerZertifikatHinzufuegenResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientZertifikat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apoNr" type="xs:int" />
+        <xs:element minOccurs="0" name="apoIk" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientZertifikatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ArsZertifikatService.Contracts" minOccurs="0" name="GetClientZertifikatResult" nillable="true" type="q1:ClientCertificate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServerZertifikate">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServerZertifikateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ArsZertifikatService.Contracts" minOccurs="0" name="GetServerZertifikateResult" nillable="true" type="q2:ArrayOfServerCertificate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSicherheitsmerkmale">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSicherheitsmerkmaleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ArsZertifikatService.Contracts" minOccurs="0" name="GetSicherheitsmerkmaleResult" nillable="true" type="q3:Sicherheitsmerkmale" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

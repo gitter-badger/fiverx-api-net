@@ -152,7 +152,8 @@ namespace FiverxLinkSecurityLib.Security
       //Erstellen des Zertifikates:
       X509Certificate certificate = CreateX509Certificate(schluesselPaar.Public,
                                                           schluesselPaar.Private,
-                                                          hashtype, antragsteller,
+                                                          hashtype,
+                                                          antragsteller,
                                                           aussteller,
                                                           gueltigVon,
                                                           gueltiBis,
@@ -259,7 +260,7 @@ namespace FiverxLinkSecurityLib.Security
     {
       if (!gueltigVon.HasValue)
       {
-        gueltigVon = DateTime.Parse(DateTime.Now.ToString("dd.MM.yyyy 00:00:00"));
+        gueltigVon = DateTime.Parse(DateTime.Now.ToString("dd.MM.yyyy"));
       }
       else
       {
@@ -288,7 +289,7 @@ namespace FiverxLinkSecurityLib.Security
       nameValuesSubjectDn.Add("DE");
       X509Name subjectDN = new X509Name(nameOidsSubjectDn, nameValuesSubjectDn);
 
-      certGenerator.SetSerialNumber(BigInteger.ValueOf(1));
+      certGenerator.SetSerialNumber(BigInteger.ProbablePrime(120, new Random()));
       certGenerator.SetNotBefore(gueltigVon.Value);
       certGenerator.SetNotAfter(gueltigBis.Value);
       certGenerator.SetSubjectDN(subjectDN);
@@ -303,6 +304,7 @@ namespace FiverxLinkSecurityLib.Security
         certGenerator.AddExtension(X509Extensions.AuthorityKeyIdentifier, false, new AuthorityKeyIdentifierStructure(caZertifikat.GetPublicKey()));
         certGenerator.AddExtension(X509Extensions.SubjectKeyIdentifier, false, new SubjectKeyIdentifierStructure(oeffentlicherSchluessel));
         certGenerator.SetIssuerDN(caZertifikat.IssuerDN);
+
         certificate = certGenerator.Generate(caPrivateKey);
       }
       else
@@ -654,9 +656,6 @@ namespace FiverxLinkSecurityLib.Security
 
       return CreatePkcs12Store(cert, keyPair, anzeigename);
     }
-
-
-
 
 
     public static X509Certificate tmpCertificate { get; set; }

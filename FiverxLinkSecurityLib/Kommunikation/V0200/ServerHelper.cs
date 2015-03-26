@@ -56,7 +56,8 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
                                                   string rzKeyStorePasswort,
                                                   out bool istEntschluesselungErfolgreich,
                                                   out bool istSignaturValide,
-                                                  out bool istRohdatenTransfer)
+                                                  out bool istRohdatenTransfer,
+                                                  out X509Certificate signatureCertificate)
     {
       istEntschluesselungErfolgreich = false;
       istSignaturValide = false;
@@ -67,10 +68,12 @@ namespace FiverxLinkSecurityLib.Kommunikation.V0200
       XmlHelper.DecryptVerifyXMLAndGetRawData(anfrage,
                                               rzKeyStore,
                                               rzKeyStorePasswort,
+                                              true,
                                               out istEntschluesselungErfolgreich,
                                               out istSignaturValide,
                                               out istRohdatenTransfer,
-                                              out xmlAsString);
+                                              out xmlAsString,
+                                              out signatureCertificate);
 
       return xmlAsString;
     }

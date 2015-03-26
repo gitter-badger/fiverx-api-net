@@ -1,6 +1,10 @@
 ﻿
 
 
+using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
+using System.Xml;
 namespace FiverxLinkSecurityTestClient
 {
   class Program
@@ -12,13 +16,17 @@ namespace FiverxLinkSecurityTestClient
 
     private static void Demolauf()
     {
+      Demo.testx();
+
       //Demo.DemoServerZertifikat(true);
       //Demo.DemoClientZertifikat();
-      //Demo.DemoRzeAnfrage();
+      Demo.DemoRzeAnfrage();
       //Demo.DemoRzeAntwort();
-      Demo.DemoServiceAnfrageVerarbeiteAuftrag();
-      Demo.DemoServiceAnfrageLadeSicherheitsmerkmale();
-      Demo.DemoServiceAnfrageLadeRzSecurityVersion();
+      //Demo.DemoServiceAnfrageVerarbeiteAuftrag();
+      //Demo.DemoServiceAnfrageLadeSicherheitsmerkmale();
+      //Demo.DemoServiceAnfrageLadeRzSecurityVersion();
     }
+
+    
   }
 }

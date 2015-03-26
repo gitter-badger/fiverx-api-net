@@ -15,7 +15,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
@@ -83,26 +85,26 @@
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzSicherheitsmerkmaleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService1.disco" />
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.ladeRzZertifikatResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\FiveRxSecurityService\FiverxLinkSecurityLib.FiveRxSecurityService.verarbeiteAuftragResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService1.wsdl" />
     <None Include="Service References\FiveRxSecurityService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\FiveRxSecurityService\configuration.svcinfo" />
     <None Include="Service References\FiveRxSecurityService\configuration91.svcinfo" />
+    <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Schema\V0200\FiveRxSecurityBox_SV0100_16.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\FiveRxSecurityService\FiveRxLinkSecurityService.wsdl" />
     <None Include="WSDL\V0200\FiveRxSecurityBox_02_00_15.wsdl" />
   </ItemGroup>
   <ItemGroup>
