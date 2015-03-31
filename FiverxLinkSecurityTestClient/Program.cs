@@ -16,8 +16,6 @@ namespace FiverxLinkSecurityTestClient
 
     private static void Demolauf()
     {
-      Demo.testx();
-
       //Demo.DemoServerZertifikat(true);
       //Demo.DemoClientZertifikat();
       Demo.DemoRzeAnfrage();

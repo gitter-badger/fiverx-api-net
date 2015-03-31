@@ -5,3 +5,9 @@ C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\BouncyCas
 C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\obj\Debug\FiverxLinkSecurityLib.dll
 C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\obj\Debug\FiverxLinkSecurityLib.pdb
 C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityLib\obj\Debug\FiverxLinkSecurityLib.csprojResolveAssemblyReference.cache
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\FiverxLinkSecurityLib.dll.config
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\FiverxLinkSecurityLib.dll
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\FiverxLinkSecurityLib.pdb
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityLib\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityLib\obj\Debug\FiverxLinkSecurityLib.dll
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityLib\obj\Debug\FiverxLinkSecurityLib.pdb

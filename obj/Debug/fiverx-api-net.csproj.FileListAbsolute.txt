@@ -3,3 +3,8 @@ C:\develop\FiveRX\Trunk\fiverx-api-net\bin\Debug\fiverx-api-net.pdb
 C:\develop\FiveRX\Trunk\fiverx-api-net\obj\Debug\fiverx-api-net.csprojResolveAssemblyReference.cache
 C:\develop\FiveRX\Trunk\fiverx-api-net\obj\Debug\fiverx-api-net.dll
 C:\develop\FiveRX\Trunk\fiverx-api-net\obj\Debug\fiverx-api-net.pdb
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\bin\Debug\fiverx-api-net.dll
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\bin\Debug\fiverx-api-net.pdb
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\obj\Debug\fiverx-api-net.csprojResolveAssemblyReference.cache
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\obj\Debug\fiverx-api-net.dll
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\obj\Debug\fiverx-api-net.pdb

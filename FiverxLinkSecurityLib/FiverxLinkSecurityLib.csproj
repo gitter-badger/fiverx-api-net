@@ -70,6 +70,10 @@
     <Compile Include="Security\Password.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SignHelper.cs" />
+    <Compile Include="Security\XmlInteropSigning\BaseXmlDsig.cs" />
+    <Compile Include="Security\XmlInteropSigning\XmlDsigDetached.cs" />
+    <Compile Include="Security\XmlInteropSigning\XmlDsigEnveloped.cs" />
+    <Compile Include="Security\XmlInteropSigning\XmlDsigEnveloping.cs" />
     <Compile Include="Service References\FiveRxSecurityService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

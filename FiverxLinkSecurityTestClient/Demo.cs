@@ -119,28 +119,6 @@ namespace FiverxLinkSecurityTestClient
       Pkcs12Store clientKeyStoreTrans = CertHelper.ConvertBase64StringToPKCSKeyStore(pkcsStoreBase64Formated, clientPasswort);
     }
 
-    public static void testx()
-    {
-      XmlDocument dicdox = new XmlDocument();
-      dicdox.PreserveWhitespace = true;
-      dicdox.Load(zertpfad + "\\test.txt");
-
-      MemoryStream ms = new MemoryStream();
-      dicdox.Save(ms);
-      byte[] bytes = ms.ToArray();
-      Pkcs12Store rzKeyStore = CertHelper.LadePkcsStore(zertpfad + "\\" + rzCertDateiname + ".pfx", rzPasswort);
-
-      bool istEntschluesselungErfolgreich;
-      bool istSignaturKonfirm;
-      bool istSigniertesXmlValide;
-      string xml;
-
-      X509Certificate signatureCertificate;
-
-      XmlHelper.DecryptVerifyXMLAndGetRawData(bytes, rzKeyStore, rzPasswort, true, out istEntschluesselungErfolgreich, out istSignaturKonfirm, out istSigniertesXmlValide, out xml, out signatureCertificate);
-
-    }
-
     /// <summary>
     /// Laden der Zertifikate, Erstellen eines XML Objektes der Form rzeAnfrage, Signierung und Verschlüsselung des Objektes,
     /// und Entschlüsselung und Prüfung der Signatur

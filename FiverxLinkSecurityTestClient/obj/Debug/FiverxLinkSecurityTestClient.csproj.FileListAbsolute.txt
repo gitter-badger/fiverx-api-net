@@ -11,3 +11,16 @@ C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\Fi
 C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.application
 C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.exe
 C:\develop\FiveRX\Trunk\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.pdb
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\FiverxLinkSecurityTestClient.exe.config
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\FiverxLinkSecurityTestClient.exe.manifest
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\FiverxLinkSecurityTestClient.application
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\FiverxLinkSecurityTestClient.exe
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\FiverxLinkSecurityTestClient.pdb
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\FiverxLinkSecurityLib.dll
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\bin\Debug\FiverxLinkSecurityLib.pdb
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.csprojResolveAssemblyReference.cache
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.exe.manifest
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.application
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.exe
+C:\Users\David\develop\fiverx-api-net-master\fiverx-api-net\FiverxLinkSecurityTestClient\obj\Debug\FiverxLinkSecurityTestClient.pdb
