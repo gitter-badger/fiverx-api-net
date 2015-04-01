@@ -1,10 +1,6 @@
 ﻿
 
 
-using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
-using System.Xml;
 namespace FiverxLinkSecurityTestClient
 {
   class Program
@@ -18,13 +14,13 @@ namespace FiverxLinkSecurityTestClient
     {
       //Demo.DemoServerZertifikat(true);
       //Demo.DemoClientZertifikat();
-      Demo.DemoRzeAnfrage();
+      //Demo.DemoRzeAnfrage();
       //Demo.DemoRzeAntwort();
       //Demo.DemoServiceAnfrageVerarbeiteAuftrag();
       //Demo.DemoServiceAnfrageLadeSicherheitsmerkmale();
       //Demo.DemoServiceAnfrageLadeRzSecurityVersion();
     }
 
-    
+
   }
 }
